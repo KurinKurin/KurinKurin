@@ -26,20 +26,16 @@ public class Controller {
     
     @RequestMapping(method = RequestMethod.GET)
     public ArrayList<Tienda> getTiendas(){
-        return stub.getTiendas();
-        
+        return stub.getTiendas();       
     }
-
 
     @RequestMapping(method = RequestMethod.POST)
     public void setTiendas(@RequestBody Tienda t){
-        stub.setTiendas(t);
-        
+        stub.setTiendas(t);   
     }
     
     @RequestMapping(method = RequestMethod.DELETE)
     public void removeTienda(@RequestBody Tienda t){
         stub.removeTienda(t);       
     }
-    
 }

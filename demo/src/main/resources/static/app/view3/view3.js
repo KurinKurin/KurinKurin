@@ -11,21 +11,20 @@ angular.module('myApp.view3', ['ngRoute'])
 
 .controller('View3Ctrl', ['$scope','Get', 'Delete',function($scope,Get,Delete) {
        
+      Get.get(function(data){ 
+                $scope.listado = data; 
+            }); 
+       
       $scope.agregarServicio = function () {
                     var newitem = {"nombre": $scope.nombre, "direccion": $scope.direccion, "telefono": $scope.telefono, "descripcion": $scope.descripcion};
 		
                 };  
        $scope.eliminar = function (tienda) {
-                    
-                    //Delete.removeTienda(tienda,function () {
-                        //console.info("Deleted: " + newitem.nombre);
-                   // }
-                   // );
-		
-                }; 
-       
-     Get.get(function(data){ 
-                $scope.listado=data; 
-            });
-
+                     
+                 var index = $scope.listado.indexOf(tienda);
+                 $scope.listado.splice(index, 1); 
+                  
+                        console.info("Deleted " + tienda + "  "+index);
+                  
+                };  
 }]);
