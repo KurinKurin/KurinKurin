@@ -9,6 +9,7 @@ angular.module('myApp', [
   'myApp.view2',
   'myApp.view3',
   'myApp.login',
+  'myApp.signUp',  
   'myApp.services',
   'myApp.version'
 ])
