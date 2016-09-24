@@ -15,5 +15,5 @@ import java.util.List;
 public interface IStub {
     public ArrayList<Tienda> getTiendas();
     public void setTiendas(Tienda t);
-    public void removeTienda(Tienda t);
+    public void removeTienda(int t);
 }

@@ -25,7 +25,7 @@ ArrayList<Tienda> listaTiendas = new ArrayList<Tienda>();
         listaTiendas.add(t);
     }
     
-    public void removeTienda(Tienda t){
+    public void removeTienda(int t){
         listaTiendas.remove(t);
     }
    

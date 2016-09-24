@@ -10,7 +10,7 @@ angular.module('myApp.view3', ['ngRoute'])
 }])
 
 .controller('View3Ctrl', ['$scope','Get', 'Delete',function($scope,Get,Delete) {
-       
+      $scope.listado;
       Get.get(function(data){ 
                 $scope.listado = data; 
             }); 
@@ -21,10 +21,10 @@ angular.module('myApp.view3', ['ngRoute'])
                 };  
        $scope.eliminar = function (tienda) {
                      
-                 var index = $scope.listado.indexOf(tienda);
-                 $scope.listado.splice(index, 1); 
-                  
-                        console.info("Deleted " + tienda + "  "+index);
+                 $scope.index = $scope.listado.indexOf(tienda);
+                 $scope.listado.splice( $scope.index, 1); 
+                 Delete.delete({id: 0});
+                        console.info("Deleted "+ "  "+ $scope.index);
                   
                 };  
 }]);

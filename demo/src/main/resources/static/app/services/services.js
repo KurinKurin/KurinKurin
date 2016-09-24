@@ -18,7 +18,9 @@ angular.module('myApp.services', ['ngRoute', 'ngResource'])
         })
 
         .factory('Delete', function ($resource) {
-            return $resource('/tiendas');
+            console.info("Entro en la factory");
+            return $resource('/tiendas/delete/:id',{id : '@id'}, 
+                    {delete: {method: 'DELETE'}});
         })
 
         .factory('Get', function ($resource) {
