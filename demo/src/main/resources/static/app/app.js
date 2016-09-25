@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'ngResource',
   'ngMaterial',
+  'myApp.home',
   'myApp.view1',
   'myApp.view2',
   'myApp.view3',
@@ -17,7 +18,7 @@ angular.module('myApp', [
 .config(['$locationProvider', '$routeProvider','$httpProvider', function($locationProvider, $routeProvider, $httpProvider) {
   $locationProvider.hashPrefix('!');
   $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-  $routeProvider.otherwise({redirectTo: '/login'});
+  $routeProvider.otherwise({redirectTo: '/home'});
 }])
 
 .controller('logout', ['$scope','$rootScope', '$http','$location', function( $scope, $rootScope, $http, $location){ 

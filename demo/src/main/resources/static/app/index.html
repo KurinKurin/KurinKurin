@@ -13,18 +13,35 @@
   <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css">
 
+
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="css/default.css" />
+<link rel="stylesheet" type="text/css" href="css/component.css" />
 </head>
 <body>
-  <ul class="menu" ng-controller="logout">
-    
-    <li><a href="#!/view2">Agregar Tiendas</a></li>
-    <li><a href="#!/view3">Tareas pendientes</a></li>
-    <li><a href="#!/view1">Directorio de Clientes</a></li>
-    <li><a href="#!/login">Ingresar</a></li>
-    <li><a href="#!/signUp">Registrar</a></li>
-    <li><a href="" ng-click="logout()">Salir</a></li>
-    
+  <div class="peterriver-nav">
+<div class="logo">
+<a href="">KurinKurin</a>
+</div> <!-- End Logo -->
+  
+    <ul class="menu" ng-controller="logout">
+            <li><a href="#!/home">Home</a>
+            </li>
+            <li><a href="#!/view2">Agregar Tiendas</a>
+            </li>
+            <li><a href="#!/view3">Tareas pendientes</a>
+            </li>
+            <li><a href="#!/view1">Directorio de Clientes</a>
+            </li>
+            <li><a href="#!/login">Ingresar</a>
+            </li>
+            <li><a href="#!/signUp">Registrar</a>
+            </li>
+            <li><a href="" ng-click="logout()">Salir</a>
+            </li>         
   </ul>
+  </div>
+
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -46,6 +63,7 @@
 <!--Angular material-->
 <script src="bower_components/angular-material/angular-material.js"></script> 
   <script src="app.js"></script>
+  <script src="home/home.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>
   <script src="view3/view3.js"></script>
@@ -55,7 +73,5 @@
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
-
-
 </body>
 </html>
