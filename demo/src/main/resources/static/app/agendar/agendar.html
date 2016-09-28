@@ -1,0 +1,30 @@
+<form role="form" ng-submit="agendar()">
+
+    <div class="form-group">
+        <label>Tienda: </label>
+        <select ng-model="tiendaEscogida">
+            <option ng-repeat="tienda in tiendas" 
+                    value="{{tienda.nombre}}">{{tienda.nombre}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Servicio:  </label>
+        <select ng-model="servicioEscogido">
+            <option ng-repeat="servicio in servicios" 
+                    value="{{servicio.nombre}}">{{servicio.nombre}}</option>
+        </select>    
+    </div>
+
+    <div class="form-group">
+        <label>Fecha: </label>
+        <select ng-model="fechaEscogida">
+            <option ng-repeat="todo in horarios" 
+                    value="{{todo.fecha}}">{{todo.fecha}}</option>
+        </select>  
+    </div>
+
+    <button type="submit" class="btn btn-primary">Agendar</button>
+</form>
+
+

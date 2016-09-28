@@ -12,26 +12,38 @@ import java.util.ArrayList;
  * @author Cristo López
  */
 public class Tienda {
-        private String nombre;
-        private String direccion;
-        private int telefono;
-        private String descripcion;
-        private ArrayList<Servicios> servicios;
-        
-        
-        public Tienda (){
+
+    private String nombre;
+    private String direccion;
+    private int telefono;
+    private String descripcion;
+    private ArrayList<Servicios> servicios;
+
+    public Tienda() {
+    }
+
+    public Tienda(String nombre, String direccion, int telefono, String descripcion) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.descripcion = descripcion;
+    }
+
+    public ArrayList<Horario> getHorarioServicio(String nombreServicio) {
+        ArrayList<Horario> hor = new ArrayList<Horario>();
+        for (int i = 0; i < servicios.size(); i++) {
+            if (servicios.get(i).getNombre() == nombreServicio) {
+                hor = servicios.get(i).getHorarios();
+            }
         }
-        
-        public Tienda (String nombre, String direccion, int telefono, String descripcion){
-            this.nombre = nombre;
-            this.direccion = direccion;
-            this.telefono = telefono;
-            this.descripcion = descripcion;
-        }
-       
+        return hor;
+    }
+
+
+
     /**
-     @return the Servicios
-   */
+     * @return the Servicios
+     */
     public ArrayList<Servicios> getServicios() {
         return servicios;
     }
@@ -41,6 +53,7 @@ public class Tienda {
      */
     public void setServicios(Servicios servicios) {
         this.servicios.add(servicios);
+        System.out.println("Agrego a: " + this.nombre + "->" + servicios.getNombre());
     }
 
     /**

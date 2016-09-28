@@ -17,12 +17,12 @@ angular.module('myApp.view3', ['ngRoute'])
        
       $scope.agregarServicio = function () {
                     var e = document.getElementById("select");
-                    var nombre_tienda = e.options[e.selectedIndex].value;
+                    var nombreTienda = e.options[e.selectedIndex].value;
                
                     var newitem = {"nombre": $scope.nombre, "precio": $scope.precio, "descripcion": $scope.descripcion, "tamano": $scope.tamano};
-                    PostServicio.save(nombre_tienda,newitem,function () {
+                    PostServicio.save(newitem,{nombreTienda : nombreTienda});
                         console.info("Servicio agregado :" + newitem.nombre);
-                    });
+                   
                 };  
        $scope.eliminar = function (tienda) {
                      

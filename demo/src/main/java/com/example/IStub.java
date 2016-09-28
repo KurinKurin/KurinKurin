@@ -17,6 +17,8 @@ public interface IStub {
     public void setTiendas(Tienda t);
     public void removeTienda(int t);
     public void setServicios(String t, Servicios s);
-
     public ArrayList<Servicios> getServicios(String t);
+    public ArrayList<Horario> getHorarioServicioTienda(String servicio, String nombreTienda);
+    public ArrayList<Servicios> getServiciosTienda(String nombreTienda);
+    public void setServicioTienda(Servicios s, String nombreTienda);
 }

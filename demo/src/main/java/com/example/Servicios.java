@@ -12,20 +12,30 @@ import java.util.ArrayList;
  * @author Cristo López
  */
 public class Servicios {
+
     private String nombre;
     private int precio;
     private String descripcion;
     private String tamaño;
-    
-    public Servicios(){
-    
+    private ArrayList<Horario> horarios;
+
+    public Servicios() {
+
     }
-    
-    public Servicios(String nombre, int precio, String descripcion, String tamaño){
+
+    public Servicios(String nombre, int precio, String descripcion, String tamaño) {
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
         this.tamaño = tamaño;
+    }
+
+    public ArrayList<Horario> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(ArrayList<Horario> horarios) {
+        this.horarios = horarios;
     }
 
     /**
@@ -83,7 +93,5 @@ public class Servicios {
     public void setTamaño(String tamaño) {
         this.tamaño = tamaño;
     }
-    
-    
-    
+
 }

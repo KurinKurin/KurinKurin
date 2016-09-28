@@ -50,5 +50,34 @@ ArrayList<Tienda> listaTiendas = new ArrayList<Tienda>();
         return servicios; 
     }
    
+    @Override
+    public void setServicioTienda(Servicios s, String nombreTienda){
+        for(int i=0; i<listaTiendas.size(); i++){
+            if(listaTiendas.get(i).getNombre()==nombreTienda){
+                listaTiendas.get(i).setServicios(s);
+            }
+        }
+    }
+    
+    @Override
+    public ArrayList<Servicios> getServiciosTienda(String nombreTienda){
+        ArrayList<Servicios> servicios= new ArrayList<Servicios>();
+        for(int i=0; i<listaTiendas.size(); i++){
+            if(listaTiendas.get(i).getNombre()==nombreTienda){
+                servicios=listaTiendas.get(i).getServicios();
+            }
+        }
+        return servicios;
+    }
+    @Override
+    public ArrayList<Horario> getHorarioServicioTienda(String servicio, String nombreTienda){
+        ArrayList<Horario> hor= new ArrayList<Horario>();
+        for(int i=0; i<listaTiendas.size(); i++){
+            if(listaTiendas.get(i).getNombre()==nombreTienda){
+                hor=listaTiendas.get(i).getHorarioServicio(servicio);
+            }
+        }
+        return hor;
+    }
     
 }
