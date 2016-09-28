@@ -16,4 +16,7 @@ public interface IStub {
     public ArrayList<Tienda> getTiendas();
     public void setTiendas(Tienda t);
     public void removeTienda(int t);
+    public void setServicios(String t, Servicios s);
+
+    public ArrayList<Servicios> getServicios(String t);
 }

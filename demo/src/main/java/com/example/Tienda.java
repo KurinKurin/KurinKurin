@@ -16,7 +16,7 @@ public class Tienda {
         private String direccion;
         private int telefono;
         private String descripcion;
-        //private ArrayList<Servicios> servicios;
+        private ArrayList<Servicios> servicios;
         
         
         public Tienda (){
@@ -27,22 +27,21 @@ public class Tienda {
             this.direccion = direccion;
             this.telefono = telefono;
             this.descripcion = descripcion;
-            //this.servicios = servicios;
         }
        
     /**
      @return the Servicios
-   
+   */
     public ArrayList<Servicios> getServicios() {
         return servicios;
     }
 
     /**
      * @param Servicios the Servicios to set
-     
-    public void setServicios(ArrayList<Servicios> Servicios) {
-        this.servicios = Servicios;
-    }**/
+     */
+    public void setServicios(Servicios servicios) {
+        this.servicios.add(servicios);
+    }
 
     /**
      * @return the nombre

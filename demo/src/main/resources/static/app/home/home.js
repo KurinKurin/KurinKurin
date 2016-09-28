@@ -10,6 +10,6 @@ angular.module('myApp.home', ['ngRoute'])
 }])
 
 .controller('home1Ctrl', [function() {
-           
+         
 }]);
 

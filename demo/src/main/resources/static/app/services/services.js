@@ -16,10 +16,19 @@ angular.module('myApp.services', ['ngRoute', 'ngResource'])
         .factory('Post', function ($resource) {
             return $resource('/tiendas');
         })
+        
+        .factory('PostServicio', function ($resource) {
+            return $resource('/tiendas/:t',{id : '@id'});
+        })
+
+        .factory('GetServicios', function ($resource) {
+            return $resource('/tiendas/servicios', {},
+                    {get: {method: 'GET', isArray: true}});
+        })
 
         .factory('Delete', function ($resource) {
             console.info("Entro en la factory");
-            return $resource('/tiendas/delete/:id',{id : '@id'}, 
+            return $resource('/tiendas/:id',{id : '@id'}, 
                     {delete: {method: 'DELETE'}});
         })
 

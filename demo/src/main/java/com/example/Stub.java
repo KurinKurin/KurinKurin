@@ -28,5 +28,27 @@ ArrayList<Tienda> listaTiendas = new ArrayList<Tienda>();
     public void removeTienda(int t){
         listaTiendas.remove(t);
     }
+
+    @Override
+    public void setServicios(String t, Servicios s) {
+        
+        for(int c=0;c<listaTiendas.size();c++){
+            if(listaTiendas.get(c).getNombre() == t){
+                listaTiendas.get(listaTiendas.indexOf(t)).setServicios(s);
+            }
+        }
+    }
+
+    @Override
+    public ArrayList<Servicios> getServicios(String t) {
+        ArrayList<Servicios> servicios = new ArrayList<Servicios>();
+        for(int c=0;c<listaTiendas.size();c++){
+            if(listaTiendas.get(c).getNombre() == t){
+               servicios = listaTiendas.get(listaTiendas.indexOf(t)).getServicios();
+            }
+        }
+        return servicios; 
+    }
    
+    
 }

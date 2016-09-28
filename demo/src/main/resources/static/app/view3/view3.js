@@ -9,21 +9,26 @@ angular.module('myApp.view3', ['ngRoute'])
   });
 }])
 
-.controller('View3Ctrl', ['$scope','Get', 'Delete',function($scope,Get,Delete) {
+.controller('View3Ctrl', ['$scope','Get','PostServicio', 'Delete',function($scope,Get,PostServicio,Delete) {
       $scope.listado;
       Get.get(function(data){ 
                 $scope.listado = data; 
             }); 
        
       $scope.agregarServicio = function () {
-                    var newitem = {"nombre": $scope.nombre, "direccion": $scope.direccion, "telefono": $scope.telefono, "descripcion": $scope.descripcion};
-		
+                    var e = document.getElementById("select");
+                    var nombre_tienda = e.options[e.selectedIndex].value;
+               
+                    var newitem = {"nombre": $scope.nombre, "precio": $scope.precio, "descripcion": $scope.descripcion, "tamano": $scope.tamano};
+                    PostServicio.save(nombre_tienda,newitem,function () {
+                        console.info("Servicio agregado :" + newitem.nombre);
+                    });
                 };  
        $scope.eliminar = function (tienda) {
                      
                  $scope.index = $scope.listado.indexOf(tienda);
                  $scope.listado.splice( $scope.index, 1); 
-                 Delete.delete({id: 0});
+                 Delete.delete({id: $scope.index});
                         console.info("Deleted "+ "  "+ $scope.index);
                   
                 };  

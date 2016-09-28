@@ -24,7 +24,6 @@ public class Controller {
     
    @Autowired
    IStub stub;
-    
     @RequestMapping(method = RequestMethod.GET)
     public ArrayList<Tienda> getTiendas(){
         return stub.getTiendas();       
@@ -35,7 +34,18 @@ public class Controller {
         stub.setTiendas(t);   
     }
     
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{t}", method = RequestMethod.POST)
+    public void setServicio(@PathVariable String t, @RequestBody Servicios s){
+         stub.setServicios(t,s); 
+    }
+    
+    @RequestMapping(value = "/servicios", method = RequestMethod.GET)
+    public ArrayList<Servicios> getServicios(String t){
+        return stub.getServicios(t);       
+    }
+    
+    
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void removeTienda(@PathVariable int t){
         //stub.removeTienda(t);       
         System.out.println("Deleteeeeeeeee");
