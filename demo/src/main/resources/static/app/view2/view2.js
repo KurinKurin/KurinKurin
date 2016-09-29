@@ -11,7 +11,7 @@ angular.module('myApp.view2', ['ngRoute'])
 
 
         .controller('View2Ctrl', ['$scope', 'Post', '$mdDialog', function ($scope, Post, $mdDialog) {
-                $scope.nombre = "";
+                $scope.nombre = "qwerty";
                 $scope.direccion = "";
                 $scope.telefono = 5;
                 $scope.descripcion = "";

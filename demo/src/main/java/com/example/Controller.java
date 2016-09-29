@@ -54,7 +54,7 @@ public class Controller {
     
     @RequestMapping(value="/{nombreTienda}/servicio",method = RequestMethod.POST)
     public void setServicio(@RequestBody Servicios s, @PathVariable("nombreTienda") String nombreTienda){
-        System.out.println("Entro en setSetvicio");
+        System.out.println("Entro en setSetvicio->"+s.getNombre());
         stub.setServicioTienda(s, nombreTienda);
     }
 }

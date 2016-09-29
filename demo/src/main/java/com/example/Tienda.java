@@ -17,7 +17,7 @@ public class Tienda {
     private String direccion;
     private int telefono;
     private String descripcion;
-    private ArrayList<Servicios> servicios;
+    private ArrayList<Servicios> servicios = new ArrayList<Servicios>();
 
     public Tienda() {
     }

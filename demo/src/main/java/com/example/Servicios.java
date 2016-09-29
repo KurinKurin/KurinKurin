@@ -16,18 +16,18 @@ public class Servicios {
     private String nombre;
     private int precio;
     private String descripcion;
-    private String tamaño;
+    private String tamano;
     private ArrayList<Horario> horarios;
 
     public Servicios() {
 
     }
 
-    public Servicios(String nombre, int precio, String descripcion, String tamaño) {
+    public Servicios(String nombre, int precio, String descripcion, String tamano) {
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
-        this.tamaño = tamaño;
+        this.tamano = tamano;
     }
 
     public ArrayList<Horario> getHorarios() {
@@ -83,15 +83,15 @@ public class Servicios {
     /**
      * @return the tamaño
      */
-    public String getTamaño() {
-        return tamaño;
+    public String getTamano() {
+        return tamano;
     }
 
     /**
      * @param tamaño the tamaño to set
      */
-    public void setTamaño(String tamaño) {
-        this.tamaño = tamaño;
+    public void setTamaño(String tamano) {
+        this.tamano = tamano;
     }
 
 }

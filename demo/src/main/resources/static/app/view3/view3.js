@@ -10,7 +10,12 @@ angular.module('myApp.view3', ['ngRoute'])
 }])
 
 .controller('View3Ctrl', ['$scope','Get','PostServicio', 'Delete',function($scope,Get,PostServicio,Delete) {
-      $scope.listado;
+     $scope.nombreServicio="Baño";
+     $scope.precioServicio=25000;
+     $scope.descripcionServicio="Limpio";
+     $scope.tamanoServicio="grande";
+                
+                $scope.listado;
       Get.get(function(data){ 
                 $scope.listado = data; 
             }); 
@@ -19,9 +24,10 @@ angular.module('myApp.view3', ['ngRoute'])
                     var e = document.getElementById("select");
                     var nombreTienda = e.options[e.selectedIndex].value;
                
-                    var newitem = {"nombre": $scope.nombre, "precio": $scope.precio, "descripcion": $scope.descripcion, "tamano": $scope.tamano};
+                    var newitem = {"nombre": $scope.nombreServicio, "precio": $scope.precioServicio, "descripcion": $scope.descripcionServicio, "tamano": $scope.tamanoServicio};
+                    console.info("newitem: "+newitem.nombre);
                     PostServicio.save(newitem,{nombreTienda : nombreTienda});
-                        console.info("Servicio agregado :" + newitem.nombre);
+                        console.info("Servicio agregado :" + JSON.stringify(newitem));
                    
                 };  
        $scope.eliminar = function (tienda) {
