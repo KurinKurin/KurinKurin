@@ -5,24 +5,43 @@
  */
 package com.example;
 
+import javax.persistence.*;
+
 /**
  *
  * @author castellanosisa
  */
+@Entity
+@Table(name="horarios")
 public class Horario {
      
+    public int id; 
     public String fecha;
     public String disponibilidad;
 
     public Horario(String fecha, String disponibilidad) {
+        this.id =id; 
         this.fecha = fecha;
         this.disponibilidad = disponibilidad;
     }    
+
     
     public Horario(){
         
     }
     
+    @Id 
+    @GeneratedValue
+    @Column(name="id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    @Column(name="fecha")
     public String getFecha() {
         return fecha;
     }
@@ -31,6 +50,7 @@ public class Horario {
         this.fecha = fecha;
     }
 
+    @Column(name="disponibilidad")
     public String getDisponibilidad() {
         return disponibilidad;
     }

@@ -77,11 +77,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
-
-        
-    </dependencies>
+	 <dependency>
+	  <groupId>org.hibernate</groupId>
+	  <artifactId>hibernate-core</artifactId>
+	  <version>4.3.5.Final</version>
+	  <type>jar</type>
+	 </dependency>
+	</dependencies>
 
 	<build>
 		<plugins>

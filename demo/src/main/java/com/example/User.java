@@ -5,11 +5,16 @@
  */
 package com.example;
 
+import javax.persistence.*;
+
 /**
  *
  * @author Henry Hurtado.
  * @author Isabel Castellanos
  */
+
+@Entity 
+@Table(name="users")
 public class User {
     String name;
     String lastName;
@@ -33,6 +38,7 @@ public class User {
         this.address = address;
     }
 
+    @Column(name="name")
     public String getName() {
         return name;
     }
@@ -40,7 +46,8 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
+    
+    @Column(name="lastname")
     public String getLastName() {
         return lastName;
     }
@@ -49,6 +56,8 @@ public class User {
         this.lastName = lastName;
     }
 
+    @Id
+    @Column(name="user")
     public String getUser() {
         return user;
     }
@@ -57,6 +66,7 @@ public class User {
         this.user = user;
     }
 
+    @Column(name="password")
     public String getPassword() {
         return password;
     }
@@ -65,6 +75,7 @@ public class User {
         this.password = password;
     }
 
+    @Column(name="email")
     public String getEmail() {
         return email;
     }
@@ -73,6 +84,7 @@ public class User {
         this.email = email;
     }
 
+    @Column(name="phone")
     public int getPhone() {
         return phone;
     }
@@ -81,6 +93,7 @@ public class User {
         this.phone = phone;
     }
 
+    @Column(name="address")
     public String getAddress() {
         return address;
     }

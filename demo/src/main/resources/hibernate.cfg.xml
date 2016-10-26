@@ -13,7 +13,9 @@
     <property name="use_sql_comments">true</property>
 
     <mapping class="com.example.Tienda"/>
-    <mapping class="com.example.Servicio"/>
+    <mapping class="com.example.Servicio"/> 
+    <mapping class="com.example.User"/>
+    <mapping class="com.example.Horario"/>
     
   </session-factory>
 
