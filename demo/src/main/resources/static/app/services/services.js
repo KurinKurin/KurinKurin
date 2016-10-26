@@ -19,19 +19,20 @@ angular.module('myApp.services', ['ngRoute', 'ngResource'])
 
         .factory('PostServicio', function ($resource) {
             console.info("Entro en la PostServicio");
-            return $resource('/tiendas/:nombreTienda/servicio', {nombreTienda: "@nombreTienda"});
+            return $resource('/servicios/:nombreTienda/servicio', {nombreTienda: "@nombreTienda"});
             
         })
 
         .factory('GetServices', function ($resource) {
-            return $resource('/tiendas/:nombreTienda/servicios', {nombreTienda: "@nombreTienda"},
+            console.info("GetServices-------------------------------------------------------------------");
+            return $resource('/servicios/{nombreTienda}', {nombreTienda: "@nombreTienda"},
                     {get: {method: 'GET', isArray: true}});
         })
 
-        .factory('GetHorarioService', function ($resource) {
-            return $resource('/tiendas/:nombreTienda/servicios/:servicio/horarios', {nombreTienda: "@nombreTienda", servicio: "@servicio"},
-                    {get: {method: 'GET', isArray: true}});
-        })
+//        .factory('GetHorarioService', function ($resource) {
+//            return $resource('/tiendas/:nombreTienda/servicios/:servicio/horarios', {nombreTienda: "@nombreTienda", servicio: "@servicio"},
+//                    {get: {method: 'GET', isArray: true}});
+//        })
 
         .factory('Delete', function ($resource) {
             console.info("Entro en la factory");

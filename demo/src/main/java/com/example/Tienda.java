@@ -12,6 +12,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.OneToMany;
@@ -38,16 +40,15 @@ public class Tienda implements java.io.Serializable {
     public Tienda() {
     }
 
-       public Tienda(TiendaId id, String nombre, String direccion, int telefono, String descripcion) {
-        this.id=id;
+       public Tienda(String nombre, String direccion, int telefono, String descripcion) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.descripcion = descripcion;
     }
        
-    public Tienda(TiendaId id, String nombre, String direccion, int telefono, String descripcion, Set<Servicio> servicios) {
-        this.id=id;
+    public Tienda(String nombre, String direccion, int telefono, String descripcion, Set<Servicio> servicios) {
+
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
