@@ -42,15 +42,16 @@ public class Tienda implements java.io.Serializable {
     public Tienda() {
     }
 
-    public Tienda(String nombre, String direccion, int telefono, String descripcion) {
+    public Tienda(TiendaId id, String nombre, String direccion, int telefono, String descripcion) {
+        this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.descripcion = descripcion;
     }
        
-    public Tienda(String nombre, String direccion, int telefono, String descripcion, Set<Servicio> servicios) {
-
+    public Tienda(TiendaId id, String nombre, String direccion, int telefono, String descripcion, Set<Servicio> servicios) {
+        this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;

@@ -58,7 +58,12 @@ public class Controller {
 //        Tienda tienda = (Tienda)s.load(Tienda.class, new TiendaId(5));
         //(Paciente paciente = (Paciente)s.load(Paciente.class, new PacienteId(54321,"cc"));        
 //        System.out.println("--------------------------"+tienda.getNombre()+"---------------------------");
-        s.save(t);
+Criteria criteria = s.createCriteria(Tienda.class);
+        List tiendas = criteria.list();
+        Set<Tienda> todas = new HashSet<Tienda>(tiendas);        
+Tienda ti = new Tienda(new TiendaId(todas.size()+1),t.getNombre(),t.getDireccion(),t.getTelefono(),t.getDescripcion()); 
+s.saveOrUpdate(ti);        
+        s.save(ti);
 //                System.out.println("--------------------------SALIOOOOOOOOOOOOOOOOOO---------------------------");
 
         tx.commit();    
