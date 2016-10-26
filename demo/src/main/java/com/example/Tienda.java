@@ -6,61 +6,101 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 
 /**
  *
  * @author Cristo López
  */
-public class Tienda {
 
+@Entity
+@Table(name="tiendas")
+public class Tienda implements java.io.Serializable {
+        
+    private TiendaId id;
     private String nombre;
     private String direccion;
     private int telefono;
     private String descripcion;
-    private ArrayList<Servicios> servicios = new ArrayList<Servicios>();
+    private Set<Servicio> servicios = new HashSet<>();
 
     public Tienda() {
     }
 
-    public Tienda(String nombre, String direccion, int telefono, String descripcion) {
+       public Tienda(TiendaId id, String nombre, String direccion, int telefono, String descripcion) {
+        this.id=id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.descripcion = descripcion;
     }
-
-    public ArrayList<Horario> getHorarioServicio(String nombreServicio) {
-        ArrayList<Horario> hor = new ArrayList<Horario>();
-        for (int i = 0; i < servicios.size(); i++) {
-            if (servicios.get(i).getNombre() == nombreServicio) {
-                hor = servicios.get(i).getHorarios();
-            }
-        }
-        return hor;
+       
+    public Tienda(TiendaId id, String nombre, String direccion, int telefono, String descripcion, Set<Servicio> servicios) {
+        this.id=id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.descripcion = descripcion;
+        this.servicios = servicios;
+    }
+        
+    @EmbeddedId
+    public TiendaId getId() {
+        return this.id;
+    }
+    
+    public void setId(TiendaId id) {
+        this.id = id;
     }
 
+//    public Set<Horario> getHorarioServicio(String nombreServicio) {
+//        Set<Horario> hor = new HashSet<Horario>();
+//        for (Servicio i:servicios) {
+//            if (i.getNombre() == nombreServicio) {
+//                hor =i.getHorarios();
+//            }
+//        }
+//        return hor;
+//    }
 
 
-    /**
-     * @return the Servicios
-     */
-    public ArrayList<Servicios> getServicios() {
-        return servicios;
-    }
 
-    /**
-     * @param Servicios the Servicios to set
-     */
-    public void setServicios(Servicios servicios) {
-        this.servicios.add(servicios);
-        System.out.println("Agrego a: " + this.nombre + "->" + servicios.getNombre());
-    }
-
+//    /**
+//     * @return the Servicios
+//     */
+// @OneToMany(cascade =CascadeType.ALL)
+//    @PrePersist 
+//    @PreUpdate
+//    @JoinColumns({@JoinColumn(name="tiendas_id", nullable=false)})
+//   public Set<Servicio> getServicios() {
+//        return this.servicios;
+//    }
+//
+//    /**
+//     * @param s the Servicios to set
+//     */
+//    public void setServicios(Servicio s) {
+//        this.servicios.add(s);
+//        System.out.println("Agrego a: " + this.nombre + "->" + s.getNombre());
+//    }
+//
     /**
      * @return the nombre
      */
+    @Column(name="nombre")
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     /**
@@ -73,6 +113,8 @@ public class Tienda {
     /**
      * @return the direccion
      */
+    @Column(name="direccion")
+
     public String getDireccion() {
         return direccion;
     }
@@ -87,6 +129,8 @@ public class Tienda {
     /**
      * @return the telefono
      */
+    @Column(name="telefono")
+
     public int getTelefono() {
         return telefono;
     }
@@ -101,6 +145,8 @@ public class Tienda {
     /**
      * @return the descripcion
      */
+    @Column(name="descripcion")
+
     public String getDescripcion() {
         return descripcion;
     }
@@ -110,5 +156,23 @@ public class Tienda {
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the servicios
+     */
+    @OneToMany(cascade =CascadeType.ALL)
+    @PrePersist 
+    @PreUpdate
+    @JoinColumns({@JoinColumn(name="tiendas_id", nullable=false)})
+    public Set<Servicio> getServicios() {
+        return servicios;
+    }
+
+    /**
+     * @param servicios the servicios to set
+     */
+    public void setServicios(Set<Servicio> servicios) {
+        this.servicios = servicios;
     }
 }

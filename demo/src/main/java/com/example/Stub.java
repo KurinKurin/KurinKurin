@@ -6,7 +6,9 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,9 +17,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class Stub implements IStub{
-ArrayList<Tienda> listaTiendas = new ArrayList<Tienda>(); 
+Set<Tienda> listaTiendas = new HashSet<Tienda>(); 
 
-    public ArrayList<Tienda> getTiendas() {
+    public Set<Tienda> getTiendas() {
          return listaTiendas;
     }
 
@@ -30,59 +32,64 @@ ArrayList<Tienda> listaTiendas = new ArrayList<Tienda>();
     }
 
     @Override
-    public void setServicios(String t, Servicios s) {
-        
-        for(int c=0;c<listaTiendas.size();c++){
-            if(listaTiendas.get(c).getNombre().equals(t)){
-                listaTiendas.get(listaTiendas.indexOf(t)).setServicios(s);
+    public void setServicios(String t, Servicio s) {
+        Set<Servicio> servi=new HashSet<>(); 
+        for(Tienda c:listaTiendas){
+            if(c.getNombre().equals(t)){
+                servi=c.getServicios();
+                servi.add(s);
+                c.setServicios(servi);
             }
         }
     }
 
     @Override
-    public ArrayList<Servicios> getServicios(String t) {
-        ArrayList<Servicios> servicios = new ArrayList<Servicios>();
+    public Set<Servicio> getServicios(String t) {
+        Set<Servicio> servicios = new HashSet<Servicio>();
         
-        for(int c=0;c<listaTiendas.size();c++){
-            if(listaTiendas.get(c).getNombre().equals(t)){
-               servicios = listaTiendas.get(listaTiendas.indexOf(t)).getServicios();
+        for(Tienda c:listaTiendas){
+            if(c.getNombre().equals(t)){
+               servicios = c.getServicios();
             }
         }
         return servicios; 
     }
    
     @Override
-    public void setServicioTienda(Servicios s, String nombreTienda){
+    public void setServicioTienda(Servicio s, String nombreTienda){
+        Set<Servicio> servi = new HashSet<>();
         System.out.println("Cantidad de tiendas: "+listaTiendas.size());
-        for(int i=0; i<listaTiendas.size(); i++){
-             System.out.println(listaTiendas.get(i).getNombre()+"<------>"+nombreTienda);
-            if(listaTiendas.get(i).getNombre().equals(nombreTienda)){
+        for(Tienda i:listaTiendas){
+             System.out.println(i.getNombre()+"<------>"+nombreTienda);
+            if(i.getNombre().equals(nombreTienda)){
                System.out.println("Entroooo++++++++++++++++++++++++");
-                listaTiendas.get(i).setServicios(s);
+               servi=i.getServicios();
+               servi.add(s);
+               i.setServicios(servi);
             }
         }
         System.out.println("Entro en setServicioTienda-------------------------"+s.getNombre());
     }
     
     @Override
-    public ArrayList<Servicios> getServiciosTienda(String nombreTienda){
-        ArrayList<Servicios> servicios= new ArrayList<Servicios>();
-        for(int i=0; i<listaTiendas.size(); i++){
-            if(listaTiendas.get(i).getNombre().equals(nombreTienda)){
-                servicios=listaTiendas.get(i).getServicios();
+    public Set<Servicio> getServiciosTienda(String nombreTienda){
+        Set<Servicio> servicios= new HashSet<Servicio>();
+        for(Tienda i:listaTiendas){
+            if(i.getNombre().equals(nombreTienda)){
+                servicios=i.getServicios();
             }
         }
         return servicios;
     }
-    @Override
-    public ArrayList<Horario> getHorarioServicioTienda(String servicio, String nombreTienda){
-        ArrayList<Horario> hor= new ArrayList<Horario>();
-        for(int i=0; i<listaTiendas.size(); i++){
-            if(listaTiendas.get(i).getNombre().equals(nombreTienda)){
-                hor=listaTiendas.get(i).getHorarioServicio(servicio);
-            }
-        }
-        return hor;
-    }
+//    @Override
+//    public Set<Horario> getHorarioServicioTienda(String servicio, String nombreTienda){
+//        Set<Horario> hor= new HashSet<Horario>();
+//        for(Tienda i:listaTiendas){
+//            if(i.getNombre().equals(nombreTienda)){
+//                hor=i.getHorarioServicio(servicio);
+//            }
+//        }
+//        return hor;
+//    }
     
 }
