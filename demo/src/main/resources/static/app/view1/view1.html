@@ -1,9 +1,11 @@
     <table class="table table-striped table-hover">
   <tbody>
-     <tr><td>
-    <select id="select">
+     <tr>   <td > 
+          <select id="select">
              <option ng-repeat="todo in listado" value="{{todo.nombre}}">{{todo.nombre}}  </option>
-    </select></td>
+          </select>
+      
+      </td>
       <td> <button ng-click="getServicios()">Mostrar Servicios</button></td>
     </tr>
   </tbody>

@@ -9,17 +9,18 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl','Get','$scope','GetServicios', [function(Get, $scope,GetServicios) {
-        $scope.listado;
+.controller('View1Ctrl',['Get','$scope','GetServices', function(Get, $scope,GetServices) {
+       $scope.listado;
       Get.get(function(data){ 
                 $scope.listado = data; 
             }); 
+       
             
             
        $scope.getServicios = function () {
                 var e = document.getElementById("select");
                 var nombre_tienda = e.options[e.selectedIndex].value;
-		GetServicios.get(nombre_tienda,function(data){ 
+		GetServices.get(nombre_tienda,function(data){ 
                 $scope.servicios = data; 
             });
                     };

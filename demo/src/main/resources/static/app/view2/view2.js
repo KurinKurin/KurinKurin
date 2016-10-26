@@ -12,9 +12,9 @@ angular.module('myApp.view2', ['ngRoute'])
 
         .controller('View2Ctrl', ['$scope', 'Post', '$mdDialog', function ($scope, Post, $mdDialog) {
                 $scope.nombre = "qwerty";
-                $scope.direccion = "";
+                $scope.direccion = "Cll falsa # 123";
                 $scope.telefono = 5;
-                $scope.descripcion = "";
+                $scope.descripcion = ":D";
 
                 $scope.aceptar = function () {
                     var newitem = {"nombre": $scope.nombre, "direccion": $scope.direccion, "telefono": $scope.telefono, "descripcion": $scope.descripcion};
