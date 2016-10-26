@@ -15,6 +15,7 @@ import javax.persistence.*;
 @Embeddable
 public class CitaId implements java.io.Serializable {
     
+    
     private int idcita;
 
     public CitaId() {
@@ -25,6 +26,8 @@ public class CitaId implements java.io.Serializable {
 
     }
     
+    
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_cita")
     public int getId() {
         return this.idcita;

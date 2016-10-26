@@ -23,12 +23,12 @@ public class Cita implements java.io.Serializable {
    
    CitaId id;
    String user;
-   String idServicio;
+   int idServicio;
 
     public Cita() {
     }
 
-    public Cita(String user, String idServicio) {
+    public Cita(String user, int idServicio) {
         this.user = user;
         this.idServicio = idServicio;
     }
@@ -53,11 +53,11 @@ public class Cita implements java.io.Serializable {
 
     
     @Column(name="servicios_id")
-    public String getIdServicio() {
+    public int getIdServicio() {
         return idServicio;
     }
 
-    public void setIdServicio(String idServicio) {
+    public void setIdServicio(int idServicio) {
         this.idServicio = idServicio;
     }
 
