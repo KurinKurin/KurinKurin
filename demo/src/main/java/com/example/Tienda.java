@@ -36,11 +36,13 @@ public class Tienda implements java.io.Serializable {
     private int telefono;
     private String descripcion;
     private Set<Servicio> servicios = new HashSet<>();
+    private Set<Cita> citas = new HashSet<>();
 
+        
     public Tienda() {
     }
 
-       public Tienda(String nombre, String direccion, int telefono, String descripcion) {
+    public Tienda(String nombre, String direccion, int telefono, String descripcion) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -55,7 +57,19 @@ public class Tienda implements java.io.Serializable {
         this.descripcion = descripcion;
         this.servicios = servicios;
     }
-        
+    
+    @OneToMany(cascade =CascadeType.ALL)
+    @PrePersist 
+    @PreUpdate
+    @JoinColumns({@JoinColumn(name="tienda_id", nullable=false)})
+    public Set<Cita> getCitas() {
+        return citas;
+    }
+
+    public void setCitas(Set<Cita> citas) {
+        this.citas = citas;
+    }
+    
     @EmbeddedId
     public TiendaId getId() {
         return this.id;
@@ -115,7 +129,6 @@ public class Tienda implements java.io.Serializable {
      * @return the direccion
      */
     @Column(name="direccion")
-
     public String getDireccion() {
         return direccion;
     }

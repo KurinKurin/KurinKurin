@@ -1,30 +1,23 @@
-<form role="form" ng-submit="agendar()">
+    
 
-    <div class="form-group">
-        <label>Tienda: </label>
-        <select ng-model="tiendaEscogida">
-            <option ng-repeat="tienda in tiendas" 
-                    value="{{tienda.nombre}}">{{tienda.nombre}}</option>
-        </select>
-    </div>
+<div class="form-group">
+    <label for="usuario"> Usuario</label> <input type="text"
+                                                 class="form-control" ng-model="usuario">
+</div>
 
-    <div class="form-group">
-        <label>Servicio:  </label>
-        <select ng-model="servicioEscogido">
-            <option ng-repeat="servicio in servicios" 
-                    value="{{servicio.nombre}}">{{servicio.nombre}}</option>
-        </select>    
-    </div>
+<select id="select">
+    <option ng-repeat="todoT in listadoTiendas" value="{{todoT.nombre}}">{{todoT.nombre}}  </option>
+</select>
 
-    <div class="form-group">
-        <label>Fecha: </label>
-        <select ng-model="fechaEscogida">
-            <option ng-repeat="todo in horarios" 
-                    value="{{todo.fecha}}">{{todo.fecha}}</option>
-        </select>  
-    </div>
+<select id="select">
+    <option ng-repeat="todoS in listadoServicios" value="{{todoS.nombre}}">{{todoS.nombre}}  </option>
+</select>
 
-    <button type="submit" class="btn btn-primary">Agendar</button>
-</form>
+<select id="select">
+    <option ng-repeat="todoH in listadoHorarios" value="{{todoH.fecha}}">{{todoH.fecha}}  </option>
+</select>
 
+<!--Servicios <button ng-click="agregarServicio()"> Agregar </button>-->
+
+<button ng-click="agendar()">Agendar</button>
 

@@ -16,6 +16,7 @@
     <mapping class="com.example.Servicio"/> 
     <mapping class="com.example.User"/>
     <mapping class="com.example.Horario"/>
+    <mapping class="com.example.Cita"/>
     
   </session-factory>
 

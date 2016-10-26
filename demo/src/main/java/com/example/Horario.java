@@ -31,12 +31,13 @@ public class Horario {
     }
     
     @Id 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     public int getId() {
         return id;
     }
 
+    
     public void setId(int id) {
         this.id = id;
     }
