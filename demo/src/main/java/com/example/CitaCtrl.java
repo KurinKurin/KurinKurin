@@ -48,6 +48,7 @@ public class CitaCtrl {
     @RequestMapping(value = "/{nombreTienda}/cita", method = RequestMethod.POST)
     public void setCita(@RequestBody Cita cita, @PathVariable("nombreTienda") String nombreTienda) {
         System.out.println("Entro en setCita----------------------------------------");
+        System.out.println("ID-------------"+cita.getId());
         SessionFactory sf = getSessionFactory();
         Session s = sf.openSession();
         Transaction tx = s.beginTransaction();
@@ -57,14 +58,15 @@ public class CitaCtrl {
         Set<Cita> citas = new HashSet<Cita>();
         for (Tienda t : todas) {
             if (t.getNombre().equals(nombreTienda)) {
+                System.out.println("Entro ala tienda " + nombreTienda);
                 citas = t.getCitas();
                 citas.add(cita);
                 t.setCitas(citas);
+                s.save(t);
             }
         }
-//        s.save(t);
-//        tx.commit();    
-//        s.close();
-//        sf.close();
+        tx.commit();
+        s.close();
+        sf.close();
     }
 }

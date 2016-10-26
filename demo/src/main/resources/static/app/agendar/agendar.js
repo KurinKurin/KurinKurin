@@ -29,11 +29,13 @@ angular.module('myApp.agendar', ['ngRoute'])
 **/
 
                 $scope.agendar = function () {
-                    var newitem = {"name": $scope.name, "lastName": $scope.lastName, "user": $scope.user, "password": $scope.password, "email": $scope.email, "address": $scope.address, "phone": $scope.phone};
-                    PostUser.save(newitem, function () {
-                        console.info("Saved " + newitem.name);
-                    });
-
-                }
-                ;
-            }]);
+                    var e = document.getElementById("select");
+                    var nombreTienda = e.options[e.selectedIndex].value;
+               
+                    var newitem = {"user": $scope.usuario, "idServicio": 1};
+                    console.info("newitem: "+newitem.user);
+                    PostCita.save(newitem,{nombreTienda : nombreTienda});
+                        console.info("Cita agregada :" + JSON.stringify(newitem));
+                  
+                };
+                }]);
