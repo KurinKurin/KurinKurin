@@ -29,42 +29,48 @@ public class CitaCtrl {
 
     @RequestMapping(value = "/{nombreTienda}", method = RequestMethod.GET)
     public Set<Cita> getCitasTienda(@PathVariable("nombreTienda") String nombre) {
-        System.out.println("Traer las citas --------------------------------------------------------------------------------");
+        System.out.println("Traer las citas de ----------------------------------------" + nombre);
+        Set<Cita> citasTienda = new HashSet<Cita>();
         SessionFactory sf = getSessionFactory();
         Session s = sf.openSession();
         Transaction tx = s.beginTransaction();
         Criteria criteria = s.createCriteria(Tienda.class);
+        Criteria criteriaS = s.createCriteria(Cita.class);
         List tiend = criteria.list();
+        List tiendC = criteriaS.list();
         Set<Tienda> todas = new HashSet<Tienda>(tiend);
-        Set<Cita> citas = new HashSet<Cita>();
+        Set<Cita> citas = new HashSet<Cita>(tiendC);
         for (Tienda t : todas) {
             if (t.getNombre().equals(nombre)) {
-                citas = t.getCitas();
+                citasTienda = t.getCitas();
             }
         }
-        return citas;
+        System.out.println("Tamaño de servicios:" + citasTienda.size());
+        for (Cita sol : citasTienda) {
+            System.out.println("***" + sol.getId());
+        }
+        return citasTienda;
+
     }
 
-    @RequestMapping(value = "/{nombreTienda}/cita", method = RequestMethod.POST)
-    public void setCita(@RequestBody Cita cita, @PathVariable("nombreTienda") String nombreTienda) {
+    @RequestMapping(method = RequestMethod.POST)
+    public void setCita(@RequestBody Cita cita) {
         System.out.println("Entro en setCita----------------------------------------");
-        System.out.println("ID-------------"+cita.getId());
+        System.out.println("ID-------------" + cita.getId());
         SessionFactory sf = getSessionFactory();
         Session s = sf.openSession();
         Transaction tx = s.beginTransaction();
-        Criteria criteria = s.createCriteria(Tienda.class);
-        List tiend = criteria.list();
-        Set<Tienda> todas = new HashSet<Tienda>(tiend);
-        Set<Cita> citas = new HashSet<Cita>();
-        for (Tienda t : todas) {
-            if (t.getNombre().equals(nombreTienda)) {
-                System.out.println("Entro ala tienda " + nombreTienda);
-                citas = t.getCitas();
-                citas.add(cita);
-                t.setCitas(citas);
-                s.save(t);
-            }
-        }
+        Criteria criteria = s.createCriteria(Cita.class);
+        List cit = criteria.list();
+        Set<Cita> citas = new HashSet<Cita>(cit);  
+        System.out.println(citas.size()+2);
+        System.out.println("-------------"+cita.getUser()+"--------"+cita.getIdServicio());
+        
+        
+        Cita ti = new Cita(new CitaId(citas.size()+2), cita.getUser(), cita.getIdServicio());
+
+        s.save(ti);
+
         tx.commit();
         s.close();
         sf.close();

@@ -31,7 +31,8 @@ public class ServicioCtrl {
     
    @RequestMapping(value="/{nombreTienda}", method = RequestMethod.GET)
     public Set<Servicio> getServicios(@PathVariable("nombreTienda") String nombre) {
-        System.out.println("Traer los servicios --------------------------------------------------------------------------------");
+        System.out.println("Traer los servicios de ----------------------------------------"+nombre);
+        Set<Servicio> serviciosTienda = new HashSet<Servicio>();
         SessionFactory sf=getSessionFactory();
         Session s=sf.openSession();
         Transaction tx=s.beginTransaction();
@@ -43,14 +44,14 @@ public class ServicioCtrl {
         Set<Servicio> servicios = new HashSet<Servicio>(tiendS);
         for(Tienda t: todas){
                 if(t.getNombre().equals(nombre)){
-                    servicios = t.getServicios();
+                    serviciosTienda=t.getServicios();
                 }
         }
-        System.out.println("Tamaño de servicios:"+servicios.size());
-        for(Servicio sol:servicios){
+        System.out.println("Tamaño de servicios:"+serviciosTienda.size());
+        for(Servicio sol:serviciosTienda){
             System.out.println("***"+sol.getNombre());
         }
-        return servicios;     
+        return serviciosTienda;     
     }
     
     @RequestMapping(value="/{nombreTienda}/servicio",method = RequestMethod.POST)

@@ -28,6 +28,13 @@ public class Cita implements java.io.Serializable {
     public Cita() {
     }
 
+    public Cita(CitaId id, String user, int idServicio) {
+        this.id = id;
+        this.user = user;
+        this.idServicio = idServicio;
+    }
+    
+
     public Cita(String user, int idServicio) {
         this.user = user;
         this.idServicio = idServicio;

@@ -20,24 +20,24 @@ angular.module('myApp.services', ['ngRoute', 'ngResource'])
         .factory('PostServicio', function ($resource) {
             console.info("Entro en la PostServicio");
             return $resource('/servicios/:nombreTienda/servicio', {nombreTienda: "@nombreTienda"});
-            
+
         })
-        
+
         .factory('PostCita', function ($resource) {
             console.info("Entro en la PostCita");
-            return $resource('/citas/:nombreTienda/cita', {nombreTienda: "@nombreTienda"});
-            
+            return $resource('/citas');
+
         })
-        
+
         .factory('GetCitas', function ($resource) {
             console.info("GetCitas-------------------------------------------------------------------");
-            return $resource('/citas/{nombreTienda}', {nombreTienda: "@nombreTienda"},
+            return $resource('/citas/:nombreTienda', {nombreTienda: "@nombreTienda"},
                     {get: {method: 'GET', isArray: true}});
         })
 
         .factory('GetServices', function ($resource) {
-            console.info("GetServices-------------------------------------------------------------------");
-            return $resource('/servicios/{@nombreTienda}', {nombreTienda: "@nombreTienda"},
+            console.info("GetServicesTienda-------------------------------------------------------------------");
+            return $resource('/servicios/:nombreTienda', {nombreTienda: "@nombreTienda"},
                     {get: {method: 'GET', isArray: true}});
         })
 

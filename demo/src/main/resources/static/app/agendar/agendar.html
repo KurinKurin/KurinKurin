@@ -5,12 +5,16 @@
                                                  class="form-control" ng-model="usuario">
 </div>
 
-<select id="select">
+<div><label>Tiendas: </label></div>
+
+<select id="select" ng-model="tienda">
     <option ng-repeat="todoT in listadoTiendas" value="{{todoT.nombre}}">{{todoT.nombre}}  </option>
 </select>
 
-<select id="select1">
-    <option ng-repeat="todoS in listadoServicios" value="{{todoS.nombre}}">{{todoS.nombre}}  </option>
+<button ng-click="getServicios()">Continuar</button>
+
+<select id="select1" ng-model="servicio">
+    <option ng-repeat="todoS in listadoServicios" value="{{todoS.idServicios}}">{{todoS.nombre}}</option>
 </select>
 
 <select id="select2">
