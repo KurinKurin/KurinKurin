@@ -8,13 +8,18 @@
       </td>
       <td> <button ng-click="getServicios()">Mostrar Servicios</button></td>
     </tr>
-  </tbody>
-   
-  
-     <table class="table table-striped table-hover">
-  <tbody>
-    <tr ng-repeat="s in servicios">
-      <td>{{s.nombre}}  </td>
+    <tr>
+          <center>
+          <td>Nombre</td></center>          <center>
+          <td>Precio</td></center>          <center>
+          <td>Descripcion</td></center>          <center>
+          <td>Tamano</td></center>          <center>
+      </tr>
+    <tr ng-repeat="s in servis">
+      <td>{{s.nombre}}</td>
+      <td>{{s.precio}}</td>
+      <td>{{s.descripcion}}</td>
+      <td>{{s.tamano}}</td>
     </tr>
   </tbody>
 </table>

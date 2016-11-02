@@ -61,7 +61,7 @@ public class ServicioCtrl {
         Set<Servicio> servicios = new HashSet<Servicio>(servici);
         for(Tienda t: todas){
                 if(t.getNombre().equals(nombreTienda)){
-                    Servicio ser = new Servicio(serv.getNombre(),serv.getPrecio(),serv.getDescripcion(),serv.getTamano());
+//                    Servicio ser = new Servicio(serv.getNombre(),serv.getPrecio(),serv.getDescripcion(),serv.getTamano());
                     //s.save(ser);
                     System.out.println("Entro para meter un servicio en la tienda:"+t.getNombre());
                 }

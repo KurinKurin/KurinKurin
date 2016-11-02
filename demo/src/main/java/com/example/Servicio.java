@@ -23,12 +23,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name="servicios")
 public class Servicio implements java.io.Serializable {
-    
+
+       
     private int idServicios;
     private String nombre;
     private int precio;
     private String descripcion;
     private String tamano;
+    private int servs;
 //    private Set<Horario> horarios;
 
     public Servicio() {
@@ -40,6 +42,14 @@ public class Servicio implements java.io.Serializable {
         this.precio = precio;
         this.descripcion = descripcion;
         this.tamano = tamano;
+    }
+    
+    public Servicio(String nombre, int precio, String descripcion, String tamano, int servs) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.tamano = tamano;
+        this.servs = servs;
     }
 
     
@@ -124,4 +134,19 @@ public class Servicio implements java.io.Serializable {
         this.tamano = tamano;
     }
 
+    
+    /**
+     * @return the tiendas_id
+     */
+    @Column(name="servs")
+    public int getServs() {
+        return servs;
+    }
+
+    /**
+     * @param tiendas_id the tiendas_id to set
+     */
+    public void setServs(int servs) {
+        this.servs = servs;
+    }
 }

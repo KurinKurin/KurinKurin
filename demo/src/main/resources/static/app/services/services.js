@@ -37,7 +37,7 @@ angular.module('myApp.services', ['ngRoute', 'ngResource'])
 
         .factory('GetServices', function ($resource) {
             console.info("GetServices-------------------------------------------------------------------");
-            return $resource('/servicios/{nombreTienda}', {nombreTienda: "@nombreTienda"},
+            return $resource('/servicios/{@nombreTienda}', {nombreTienda: "@nombreTienda"},
                     {get: {method: 'GET', isArray: true}});
         })
 
