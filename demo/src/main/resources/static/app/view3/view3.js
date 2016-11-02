@@ -27,8 +27,8 @@ angular.module('myApp.view3', ['ngRoute'])
                     var newitem = {"nombre": $scope.nombreServicio, "precio": $scope.precioServicio, "descripcion": $scope.descripcionServicio, "tamano": $scope.tamanoServicio};
                     console.info("newitem: "+newitem.nombre);
                     PostServicio.save(newitem,{nombreTienda : nombreTienda});
-                        console.info("Servicio agregado :" + JSON.stringify(newitem));
-                   
+                        console.info("Servicio agregado :" + JSON.stringify(newitem
+                   ));
                 };  
        $scope.eliminar = function (tienda) {
                      

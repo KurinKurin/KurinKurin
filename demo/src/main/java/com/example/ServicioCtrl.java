@@ -53,18 +53,20 @@ public class ServicioCtrl {
         SessionFactory sf=getSessionFactory();
         Session s=sf.openSession();
         Transaction tx=s.beginTransaction();
-        Criteria criteria = s.createCriteria(Tienda.class);
-        List tiend = criteria.list();
+        Criteria criteriaT = s.createCriteria(Tienda.class);
+        Criteria criteriaS = s.createCriteria(Servicio.class);
+        List tiend = criteriaT.list();
+        List servici = criteriaS.list();
         Set<Tienda> todas = new HashSet<Tienda>(tiend);
-        Set<Servicio> servicios = new HashSet<Servicio>();
+        Set<Servicio> servicios = new HashSet<Servicio>(servici);
         for(Tienda t: todas){
                 if(t.getNombre().equals(nombreTienda)){
-                    servicios = t.getServicios();
-                    servicios.add(serv);
-                    t.setServicios(servicios);
+                    Servicio ser = new Servicio(serv.getNombre(),serv.getPrecio(),serv.getDescripcion(),serv.getTamano());
+                    //s.save(ser);
+                    System.out.println("Entro para meter un servicio en la tienda:"+t.getNombre());
                 }
         }
-//        s.save(t);
+
 //        tx.commit();    
 //        s.close();
 //        sf.close();
