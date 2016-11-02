@@ -65,16 +65,17 @@ public class ServicioCtrl {
         List servici = criteriaS.list();
         Set<Tienda> todas = new HashSet<Tienda>(tiend);
         Set<Servicio> servicios = new HashSet<Servicio>(servici);
+        
         for(Tienda t: todas){
                 if(t.getNombre().equals(nombreTienda)){
-//                    Servicio ser = new Servicio(serv.getNombre(),serv.getPrecio(),serv.getDescripcion(),serv.getTamano());
-                    //s.save(ser);
+                    Servicio ser = new Servicio(serv.getNombre(),serv.getPrecio(),serv.getDescripcion(),serv.getTamano(),t.getId().getId());
+                    s.save(ser);
                     System.out.println("Entro para meter un servicio en la tienda:"+t.getNombre());
                 }
         }
 
-//        tx.commit();    
-//        s.close();
-//        sf.close();
+        tx.commit();    
+        s.close();
+        sf.close();
     }
 }
