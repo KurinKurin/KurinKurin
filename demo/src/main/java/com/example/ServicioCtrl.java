@@ -36,13 +36,19 @@ public class ServicioCtrl {
         Session s=sf.openSession();
         Transaction tx=s.beginTransaction();
         Criteria criteria = s.createCriteria(Tienda.class);
+        Criteria criteriaS = s.createCriteria(Servicio.class);
         List tiend = criteria.list();
+        List tiendS = criteriaS.list();
         Set<Tienda> todas = new HashSet<Tienda>(tiend);
-        Set<Servicio> servicios = new HashSet<Servicio>();
+        Set<Servicio> servicios = new HashSet<Servicio>(tiendS);
         for(Tienda t: todas){
                 if(t.getNombre().equals(nombre)){
                     servicios = t.getServicios();
                 }
+        }
+        System.out.println("Tamaño de servicios:"+servicios.size());
+        for(Servicio sol:servicios){
+            System.out.println("***"+sol.getNombre());
         }
         return servicios;     
     }
