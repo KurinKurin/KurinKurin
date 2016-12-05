@@ -59,13 +59,13 @@ public class Tienda implements java.io.Serializable {
         this.servicios = servicios;
     }
     
-    @OneToMany(cascade =CascadeType.ALL)
-    @PrePersist 
-    @PreUpdate
-    @JoinColumns({@JoinColumn(name="tienda_id", nullable=false)})
-    public Set<Cita> getCitas() {
-        return citas;
-    }
+//    @OneToMany(cascade =CascadeType.ALL)
+//    @PrePersist 
+//    @PreUpdate
+//    @JoinColumns({@JoinColumn(name="tiendas_id", nullable=false)})
+//    public Set<Cita> getCitas() {
+//        return citas;
+//    }
 
     public void setCitas(Set<Cita> citas) {
         this.citas = citas;

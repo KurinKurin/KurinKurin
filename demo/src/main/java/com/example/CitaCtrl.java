@@ -42,7 +42,7 @@ public class CitaCtrl {
         Set<Cita> citas = new HashSet<Cita>(tiendC);
         for (Tienda t : todas) {
             if (t.getNombre().equals(nombre)) {
-                citasTienda = t.getCitas();
+//                citasTienda = t.getCitas();
             }
         }
         System.out.println("Tamaño de servicios:" + citasTienda.size());
