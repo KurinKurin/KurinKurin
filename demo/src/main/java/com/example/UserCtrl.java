@@ -17,6 +17,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,12 +50,31 @@ public class UserCtrl {
         SessionFactory sf=getSessionFactory();
         Session s=sf.openSession();
         Transaction tx=s.beginTransaction();
-        Criteria criteria = s.createCriteria(Tienda.class);
+        Criteria criteria = s.createCriteria(User.class);
         List users = criteria.list();
         Set<User> todos = new HashSet<User>(users);
         return todos;
         
         
+    }
+    
+     @RequestMapping(value = "/{user}", method = RequestMethod.GET)
+    public User getCitasTienda(@PathVariable("user") String user) {
+        System.out.println("Traer las citas de ----------------------------------------" + user);
+        User userS = new User();
+        SessionFactory sf = getSessionFactory();
+        Session s = sf.openSession();
+        Transaction tx = s.beginTransaction();
+        Criteria criteria = s.createCriteria(User.class);
+        List usuarios = criteria.list();
+        Set<User> todas = new HashSet<User>(usuarios);
+        for (User t : todas) {
+            if (t.getUser().equals(user)) {
+                userS=t;
+            }
+        }
+        return userS;
+
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -54,6 +54,31 @@ public class ServicioCtrl {
         return serviciosTienda;     
     }
     
+       @RequestMapping(value="/id/{idTienda}", method = RequestMethod.GET)
+    public Set<Servicio> getServiciosId(@PathVariable("idTienda") int id) {
+        System.out.println("Traer los servicios de ----------------------------------------"+id);
+        Set<Servicio> serviciosTienda = new HashSet<Servicio>();
+        SessionFactory sf=getSessionFactory();
+        Session s=sf.openSession();
+        Transaction tx=s.beginTransaction();
+        Criteria criteria = s.createCriteria(Tienda.class);
+        Criteria criteriaS = s.createCriteria(Servicio.class);
+        List tiend = criteria.list();
+        List tiendS = criteriaS.list();
+        Set<Tienda> todas = new HashSet<Tienda>(tiend);
+        Set<Servicio> servicios = new HashSet<Servicio>(tiendS);
+        for(Tienda t: todas){
+                if(t.getId().getId()==id){
+                    serviciosTienda=t.getServicios();
+                }
+        }
+        System.out.println("Tamaño de servicios:"+serviciosTienda.size());
+        for(Servicio sol:serviciosTienda){
+            System.out.println("***"+sol.getNombre());
+        }
+        return serviciosTienda;     
+    }
+    
     @RequestMapping(value="/{nombreTienda}/servicio",method = RequestMethod.POST)
     public void setServicio(@RequestBody Servicio serv, @PathVariable("nombreTienda") String nombreTienda){
         System.out.println("Entro en setSetvicio----------------------------------------");

@@ -5,6 +5,8 @@
  */
 package com.example;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 
 /**
@@ -12,10 +14,10 @@ import javax.persistence.*;
  * @author Henry Hurtado.
  * @author Isabel Castellanos
  */
-
-@Entity 
-@Table(name="users")
+@Entity
+@Table(name = "users")
 public class User {
+
     String name;
     String lastName;
     String user;
@@ -23,9 +25,10 @@ public class User {
     String email;
     int phone;
     String address;
-    
-    public User(){
-    
+    private Set<Cita> citas = new HashSet<>();
+
+    public User() {
+
     }
 
     public User(String name, String lastName, String user, String password, String email, int phone, String address) {
@@ -38,7 +41,7 @@ public class User {
         this.address = address;
     }
 
-    @Column(name="name")
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -46,8 +49,8 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-    
-    @Column(name="lastname")
+
+    @Column(name = "lastname")
     public String getLastName() {
         return lastName;
     }
@@ -57,7 +60,7 @@ public class User {
     }
 
     @Id
-    @Column(name="user")
+    @Column(name = "user")
     public String getUser() {
         return user;
     }
@@ -66,7 +69,7 @@ public class User {
         this.user = user;
     }
 
-    @Column(name="password")
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -75,7 +78,7 @@ public class User {
         this.password = password;
     }
 
-    @Column(name="email")
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -84,7 +87,7 @@ public class User {
         this.email = email;
     }
 
-    @Column(name="phone")
+    @Column(name = "phone")
     public int getPhone() {
         return phone;
     }
@@ -93,7 +96,7 @@ public class User {
         this.phone = phone;
     }
 
-    @Column(name="address")
+    @Column(name = "address")
     public String getAddress() {
         return address;
     }
@@ -101,6 +104,17 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @PrePersist
+    @PreUpdate
+    @JoinColumns({@JoinColumn(name = "usuario", insertable = false, updatable = false)})
+    public Set<Cita> getCitas() {
+        return citas;
+    }
+
+    public void setCitas(Set<Cita> citas) {
+        this.citas = citas;
+    }
+
 }

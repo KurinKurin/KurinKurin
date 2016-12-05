@@ -8,7 +8,7 @@
 <div><label>Tiendas: </label></div>
 
 <select id="select" ng-model="tienda">
-    <option ng-repeat="todoT in listadoTiendas" value="{{todoT.nombre}}">{{todoT.nombre}}  </option>
+    <option ng-repeat="todoT in listadoTiendas" value="{{todoT.id.id}}">{{todoT.nombre}}  </option>
 </select>
 
 <button ng-click="getServicios()">Continuar</button>
@@ -17,8 +17,10 @@
     <option ng-repeat="todoS in listadoServicios" value="{{todoS.idServicios}}">{{todoS.nombre}}</option>
 </select>
 
-<select id="select2">
-    <option ng-repeat="todoH in listadoHorarios" value="{{todoH.fecha}}">{{todoH.fecha}}  </option>
+<button ng-click="getHoraCitas()">Continuar</button>
+
+<select id="select2" ng-model="cita">
+    <option ng-repeat="todoH in citas" value="{{citas.fecha}}">{{todoH.fecha}} {{todoH.hora}}</option>
 </select>
 
 <!--Servicios <button ng-click="agregarServicio()"> Agregar </button>-->

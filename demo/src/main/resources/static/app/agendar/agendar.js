@@ -9,10 +9,12 @@ angular.module('myApp.agendar', ['ngRoute'])
                 });
             }])
 
-        .controller('agendarCtrl', ['$scope', '$rootScope', 'Get', 'GetServices', 'PostCita', '$mdDialog', function ($scope, $rootScope, Get, GetServices, PostCita, $mdDialog) {
+        .controller('agendarCtrl', ['$scope', '$rootScope', 'Get', 'GetServicesId', 'GetCitasTienda','GetCitasTiendaServicios','PostCita', '$mdDialog', function ($scope, $rootScope, Get, GetServicesId, GetCitasTienda, GetCitasTiendaServicios, PostCita, $mdDialog) {
                 $scope.usuario;
                 $scope.tienda;
                 $scope.servicio;
+                $scope.cita;
+                $scope.citas;
                 $scope.listadoServicios;
                 $scope.listadoTiendas;
                 
@@ -22,21 +24,22 @@ angular.module('myApp.agendar', ['ngRoute'])
 
                 $scope.getServicios = function () {
                     console.info("nombretienda en ajendar.js"+$scope.tienda);
-                    GetServices.get({nombreTienda: $scope.tienda}, function (data) {
+                    GetServicesId.get({idTienda: $scope.tienda}, function (data) {
                         $scope.listadoServicios = data;
+     
                         console.info(data);
                     });
                 };
                 
-                /**
-                 $scope.horarios;
-                 GetHorarioService.get(function (data) {
-                 $scope.servicios = data;
-                 });
-                 **/
-
+                $scope.getHoraCitas = function (){
+                    GetCitasTienda.get({idTienda: $scope.tienda}, function (data) {
+                        $scope.citas = data;     
+                        console.info(data);
+                    });
+                }
+                
                 $scope.agendar = function () {                    
-                    var newitem = {"user": $scope.usuario, "idServicio": $scope.servicio};
+                    var newitem = {"user": $scope.usuario, "idServicio": $scope.servicio, "tienda_id":$scope.tienda, "disponible": "1", "fecha":$scope.cita, "hora":$scope.cita};
                     console.info("newitem: " + newitem.user);
                     PostCita.save(newitem);
                     console.info("Cita agregada :" + JSON.stringify(newitem));

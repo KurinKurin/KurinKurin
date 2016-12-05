@@ -40,12 +40,24 @@ angular.module('myApp.services', ['ngRoute', 'ngResource'])
             return $resource('/servicios/:nombreTienda', {nombreTienda: "@nombreTienda"},
                     {get: {method: 'GET', isArray: true}});
         })
+        .factory('GetServicesId', function ($resource) {
+            console.info("GetServicesTiendaId-------------------------------------------------------------------");
+            return $resource('/servicios/id/:idTienda', {idTienda: "@idTienda"},
+                    {get: {method: 'GET', isArray: true}});
+        })
 
-//        .factory('GetHorarioService', function ($resource) {
-//            return $resource('/tiendas/:nombreTienda/servicios/:servicio/horarios', {nombreTienda: "@nombreTienda", servicio: "@servicio"},
-//                    {get: {method: 'GET', isArray: true}});
-//        })
-
+        .factory('GetCitasTienda', function ($resource) {
+            console.info("GetCitasTienda-------------------------------------------------------------------");
+            return $resource('/citas/:idTienda', {idTienda: "@idTienda"},
+                    {get: {method: 'GET', isArray: true}});
+        })
+        
+        .factory('GetCitasTiendaServicios', function ($resource) {
+            console.info("GetCitasTienda-------------------------------------------------------------------");
+            return $resource('/citas/:idTienda/servicios', {idTienda: "@idTienda"},
+                    {get: {method: 'GET', isArray: true}});
+        })
+        
         .factory('Delete', function ($resource) {
             console.info("Entro en la factory");
             return $resource('/tiendas/:id', {id: '@id'},

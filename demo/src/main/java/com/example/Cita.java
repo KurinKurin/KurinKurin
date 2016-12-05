@@ -5,12 +5,17 @@
  */
 package com.example;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,35 +26,82 @@ import javax.persistence.Table;
 @Table(name="citas")
 public class Cita implements java.io.Serializable {
    
-   CitaId id;
+   int id;
    String user;
    int idServicio;
+   int tienda_id;
+   int disponible;
+   String fecha;
+   String hora;
 
     public Cita() {
     }
 
-    public Cita(CitaId id, String user, int idServicio) {
-        this.id = id;
+    public Cita(String user, int idServicio, int tienda_id, int disponible) {
         this.user = user;
         this.idServicio = idServicio;
-    }
-    
+        this.tienda_id = tienda_id;
+        this.disponible = disponible;
+    }  
 
-    public Cita(String user, int idServicio) {
+    public Cita(String user, int idServicio, int tienda_id, int disponible, String fecha, String hora) {
         this.user = user;
         this.idServicio = idServicio;
+        this.tienda_id = tienda_id;
+        this.disponible = disponible;
+        this.fecha = fecha;
+        this.hora = hora;
     }
     
-    @EmbeddedId
-    public CitaId getId() {
+    @Column(name="fecha")
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    @Column(name="hora")
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    
+    @Column(name="disponible")
+    public int getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(int disponible) {
+        this.disponible = disponible;
+    }
+   
+    @Column(name="tienda_id")
+    public int getTienda_id() {
+        return tienda_id;
+    }
+
+    public void setTienda_id(int tienda_id) {
+        this.tienda_id = tienda_id;
+    }
+
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "cita_id")
+    public int getId() {
         return id;
     }
 
-    public void setId(CitaId id) {
+    public void setId(int id) {
         this.id = id;
     }
-    
-    @Column(name="usuarios_id")
+    @Column(name="usuario")
     public String getUser() {
         return user;
     }
@@ -57,9 +109,8 @@ public class Cita implements java.io.Serializable {
     public void setUser(String user) {
         this.user = user;
     }
-
     
-    @Column(name="servicios_id")
+    @Column(name="servicio")
     public int getIdServicio() {
         return idServicio;
     }
@@ -67,6 +118,5 @@ public class Cita implements java.io.Serializable {
     public void setIdServicio(int idServicio) {
         this.idServicio = idServicio;
     }
-
-     
+         
 }
